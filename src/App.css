@@ -1,0 +1,241 @@
+/* === 커스텀 폰트 등록 === */
+@font-face {
+  font-family: "customFont";  /* 폰트 이름 */
+  src: url("./assets/fonts/custom_default.ttf") format("truetype");
+  font-weight: 100 900;   /* 가변 폰트면 범위, 일반 폰트면 400 등으로 */
+  font-style: normal;
+  font-display: swap;     /* 로딩 중 시스템 폰트로 먼저 보여주기 */
+}
+
+body {
+  margin: 0;
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  background-color: #fffefd;
+  color: #333;
+}
+
+.custom-header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 홈일 때 */
+.custom-header.home {
+  background-color: white;
+}
+
+.header-text.home {
+  color: #7E5800;
+}
+
+/* 다른 페이지일 때 */
+.custom-header.default {
+  background-color: #55382A;
+}
+
+.header-text.default {
+  color: white;
+}
+
+h1, h2, h3 {
+  color: #5a3e2b;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 12px;
+  background-color: #67C6DC;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+}
+
+/* 마우스 올릴 때: 살짝 떠오름 + 색상 변경 */
+button:hover {
+  background-color: #5bb3c8; /* 조금 더 진한 블루 */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 더 부드럽고 입체감 있는 그림자 */
+  transform: translateY(-2px); /* 살짝 위로 올라감 */
+}
+
+/* 누를 때: 눌린 느낌 */
+button:active {
+  background-color: #48a3b4; /* 눌렸을 때 색상 */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25); /* 눌리면서 그림자 작아짐 */
+  transform: translateY(2px); /* 아래로 눌림 */
+}
+
+img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+.container {
+  margin: auto;
+  padding: 20px;
+  font-family: "customFont", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+}
+
+/* 홈 페이지 */
+.home-container {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.home-container button {
+  display: block;
+  width: 80%;
+  margin: 10px auto;
+}
+
+/* 카드 및 그리드 */
+.card {
+  background: white;
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 12px; 
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  margin: 12px 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px); /* 살짝 떠오르는 효과 */
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+/* 선물 선택 */
+.present-container {
+  text-align: center;
+  padding: 30px;
+}
+
+.options button {
+  margin: 10px;
+}
+
+/* 편지 */
+.letter-page {
+  padding: 30px;
+}
+
+.letter-box {
+  background-color: #fff8e7;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #e4d1b9;
+  font-size: 16px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.card img {
+  object-fit: cover;
+  width: 100%;
+}
+
+.card-img-top {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px 12px 0 0;
+}
+
+.flip-card {
+  perspective: 1000px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: auto;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* 앞면 */
+.flip-card-front {
+  position: relative; /* ✅ 앞면이 높이 기준이 됨 */
+  z-index: 2;
+  width: 100%;
+  backface-visibility: hidden;
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: white;
+}
+
+/* 뒷면 */
+.flip-card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; /* ✅ 앞면에 맞춰짐 */
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* Flip 상태 */
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* 카드 안의 Card 컴포넌트도 꽉 차게 */
+.flip-card-front .card,
+.flip-card-back .card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* === 카드 이미지 영역 === */
+.card-img-top {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  flex-shrink: 0;
+  border-radius: 12px 12px 0 0;
+}
+
+/* === 카드 텍스트 영역 === */
+.card-body {
+  flex: none;
+  height: 60px; /* 고정 */
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-title {
+  margin: 0;
+  font-size: 0.9rem;
+  text-align: start;
+}
+
+.card-text {
+  margin: 0;
+  font-size: 0.7rem;
+  text-align: end;
+}
+
